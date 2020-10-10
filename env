@@ -28,7 +28,7 @@ PASS =
 CADUCIDAD_TOKEN = '1h'
 
 # SEED de token 
-# SEED => seed de autenticación puede ser cualquier String
+# SEED => seed de autenticación puede ser cualquier String 'separado-por-guiones' para una mejor semilla
 SEED = 
 
 # UAMI_STREAM => UAMIstream el host donde este corriendo la app
