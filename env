@@ -1,0 +1,35 @@
+#.env
+
+# Entorno
+NODE_ENV = 'dev'
+
+# Puerto del servidor
+PORT=
+
+# MySQL
+# MYSQL_HOST => El host donde se encuentra DB
+# MYSQL_USER => usuario DB
+# MYSQL_PASS => password DB 
+# MYSQL_DB => nombre de la DB
+MYSQL_HOST = 
+MYSQL_USER = 
+MYSQL_PASS = 
+MYSQL_DB   =
+
+
+# datos para el envío de email: nodemailer
+# EMAIL => 'email remitente
+# PASS => 'password del email
+EMAIL =
+PASS =
+
+# Vencimiento del token
+# seg * min * h 
+CADUCIDAD_TOKEN = '1h'
+
+# SEED de token 
+# SEED => seed de autenticación puede ser cualquier String
+SEED = 
+
+# UAMI_STREAM => UAMIstream el host donde este corriendo la app
+UAMI_STREAM =
