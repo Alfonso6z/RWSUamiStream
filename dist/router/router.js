@@ -28,52 +28,11 @@ const controlerEmail_1 = __importDefault(require("../server/controlerEmail"));
 const jws = require("jsonwebtoken");
 const router = express_1.Router();
 router.use(express_1.default.urlencoded({ extended: true }));
-router.get('/user', (req, res) => {
-    const query = `
-        SELECT * 
-        FROM user`;
-    mysql_1.default.ejecutarQuery(query, (err, user) => {
-        if (err) {
-            res.status(400).json({
-                ok: false,
-                error: err,
-            });
-        }
-        else {
-            res.json({
-                ok: true,
-                user: user
-            });
-        }
-    });
-});
-router.get('/user/:id', (req, res) => {
-    const id = req.params.id;
-    const escapeId = mysql_1.default.instance.cnn.escape(id);
-    const query = `
-            SELECT * 
-            FROM user
-            where id = ${escapeId}`;
-    mysql_1.default.ejecutarQuery(query, (err, user) => {
-        if (err) {
-            res.status(400).json({
-                ok: false,
-                error: err,
-            });
-        }
-        else {
-            res.json({
-                ok: true,
-                user: user[0]
-            });
-        }
-    });
-});
 router.post('/user', (req, res) => {
     const user = req.body.username;
     const token = jws.sign({
         username: user
-    }, `${process.env.SEED}`, { expiresIn: 60 * 60 });
+    }, `${process.env.SEED}`, { expiresIn: 60 });
     const usernameEscape = mysql_1.default.instance.cnn.escape(user);
     const tokenEscape = mysql_1.default.instance.cnn.escape(token);
     const query = `
@@ -81,18 +40,13 @@ router.post('/user', (req, res) => {
     `;
     mysql_1.default.ejecutarQuery(query, (err, user) => {
         if (err) {
-            res.status(400).json({
-                ok: false,
-                error: err,
-            });
+            console.log(err);
         }
         else {
-            res.json({
-                ok: true,
-                user: user
-            });
+            console.log('Se registro correctamente');
         }
     });
-    controlerEmail_1.default(user, 'UamiStream', `${process.env.UAMI_STREAMA}invite?uuid=${token}`);
+    controlerEmail_1.default(user, 'UamiStream', `${process.env.UAMI_STREAM}invite?uuid=${token}`);
+    res.render('confirmacion', { email: user });
 });
 exports.default = router;

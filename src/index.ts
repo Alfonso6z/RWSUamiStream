@@ -11,4 +11,5 @@ server.app.use(router);
 
 server.start(()=>{
     console.log(`Servidor Corriendo en el puerto ${port}`);
+    console.log(process.env.UAMI_STREAM);
 });

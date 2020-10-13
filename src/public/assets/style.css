@@ -1,0 +1,40 @@
+#login {
+    padding: 0px;
+    text-align: center;
+}
+
+.login-page {
+    background-size: cover;
+    background-position: center;
+}
+
+.auth-logo {
+    max-width: 350px;
+    margin-top: 55px;
+}
+
+#login .inner {
+    max-width: 540px;
+    padding-bottom: 6px;
+    margin: 60px auto;
+    text-align: left;
+}
+
+.form-control {
+    background-color: rgba(0, 0, 0, 0.4);
+    color: white;
+}
+
+.form-control:focus {
+    background-color: rgba(0, 0, 0, 0.4);
+    color: white;
+}
+
+.ng-binding {
+    color: aliceblue;
+}
+
+#login .inner .login_message {
+    padding: 6px 25px 20px 25px;
+    color: #c33;
+}

@@ -13,6 +13,8 @@ class Server {
     publicFolder() {
         const publicPath = path.resolve(__dirname, '../public');
         this.app.use(express.static(publicPath));
+        this.app.set('views', publicPath + '/views');
+        this.app.set('view engine', 'hbs');
     }
     start(callback) {
         this.app.listen(this.port, callback());

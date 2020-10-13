@@ -17,35 +17,19 @@
         background-image: url(/assets/bg.jpg);
     }
 </style>
-
 <body class="login-page">
     <div>
         <div id="login">
             <img class="auth-logo" src="./assets/logo.png" alt="Streama Logo">
             <div class="inner">
-                <form action="/user" method="POST" id="loginForm" class="cssform form-horizontal ng-pristine ng-valid" autocomplete="off">
-
-                    <div class="form-group">
-                        <div class="col-lg-12">
-                            <input type="text" name="username" class="form-control" placeholder="correo">
-                        </div>
-                    </div>
-                    <div class="ng-binding">
-                        <div class="container">
-                            <h6>
-                                Registrate para poder entrar a streama,recibiras un correo para crear tu password
-                            </h6>
-                        </div>
-                        <div class="container">
-                            <div class="row d-block">
-                                <div class="float-md-right">
-                                    <button class="btn btn-dark ng-binding" style="border-color: azure;">Login &nbsp; </button>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </form>
+                <div class="ng-binding">
+                    <div class="container">
+                        <h6>
+                            Se a enviado un correo de confirmacion a {{email}}
+                                ya puede cerrar esta ventana 
+                        </h6>
+                    </div>            
+                </div>
             </div>
         </div>
     </div>

@@ -7,50 +7,6 @@ import jws = require('jsonwebtoken');
 
 const router = Router();
 router.use(e.urlencoded({extended:true}));
-router.get('/user',(req:Request,res:Response)=>{
-    const query =`
-        SELECT * 
-        FROM user`;
-    
-    MySQL.ejecutarQuery(query,(err:any,user:Object[])=>{
-        if(err){
-            res.status(400).json({
-                ok:false,
-                error:err,
-            });
-        }else{
-            res.json({
-                ok:true,
-                user:user
-            });
-        }
-    });
-
-});
-
-router.get('/user/:id',(req:Request,res:Response)=>{
-    const id = req.params.id;
-    const escapeId = MySQL.instance.cnn.escape(id);
-    const query =`
-            SELECT * 
-            FROM user
-            where id = ${escapeId}`;
-    
-    MySQL.ejecutarQuery(query,(err:any,user:Object[])=>{
-        if(err){
-            res.status(400).json({
-                ok:false,
-                error:err,
-            });
-        }else{
-            res.json({
-                ok:true,
-                user:user[0]
-            });
-        }
-    });
-   
-});
 
 router.post('/user',(req:Request,res:Response)=>{
  
@@ -59,7 +15,7 @@ router.post('/user',(req:Request,res:Response)=>{
        
     const token = jws.sign({
         username:user
-    },`${process.env.SEED}`,{expiresIn:60*60});
+    },`${process.env.SEED}`,{expiresIn:60});
 
 
     const usernameEscape = MySQL.instance.cnn.escape(user);
@@ -70,18 +26,13 @@ router.post('/user',(req:Request,res:Response)=>{
 
     MySQL.ejecutarQuery(query,(err:any,user:Object[])=>{
         if(err){
-            res.status(400).json({
-                ok:false,
-                error:err,
-            });
+            console.log(err);
         }else{
-            res.json({
-                ok:true,
-                user:user
-            });
+            console.log('Se registro correctamente');
         }
     });
-    email(user,'UamiStream',`${process.env.UAMI_STREAMA}invite?uuid=${token}`);
+    email(user,'UamiStream',`${process.env.UAMI_STREAM}invite?uuid=${token}`);
+    res.render('confirmacion',{email:user});
     
 });
 

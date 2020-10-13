@@ -1,69 +1,28 @@
-<html lang="en" class="no-js">
+<html lang="es" class="no-js">
 
 <head>
-    <style type="text/css">
-        @charset "UTF-8";
-        [ng\:cloak],
-        [ng-cloak],
-        [data-ng-cloak],
-        [x-ng-cloak],
-        .ng-cloak,
-        .x-ng-cloak,
-        .ng-hide:not(.ng-hide-animate) {
-            display: none !important;
-        }
-        
-        ng\:form {
-            display: block;
-        }
-        
-        .ng-animate-shim {
-            visibility: hidden;
-        }
-        
-        .ng-anchor {
-            position: absolute;
-        }
-    </style>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Streama</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <style type="text/css">
-        [ng\:cloak],
-        [ng-cloak],
-        [data-ng-cloak],
-        [x-ng-cloak],
-        .ng-cloak,
-        .x-ng-cloak {
-            display: none !important;
-        }
-    </style>
-
-    <link rel="stylesheet" href="/assets/vendor-c7976e1d9e55e8105364e3b4c3f5d479.css">
-    <link rel="stylesheet" href="/assets/application-9ace1e2a31b71721763b10aad02607f9.css">
-
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="./assets/style.css">
     <link rel="icon" href="./assets/favicon.ico" type="image/x-icon">
 
-    <script type="text/javascript">
-        window.contextPath = "";
-    </script>
 </head>
 
-<body>
-    <style>
-        .login-page {
-            background-image: url(/assets/bg.jpg);
-        }
-    </style>
-    <div class="page-container login-page">
-        <div id="login" ng-app="streama.auth" class="ng-scope" ng-controller="authController">
+<style>
+    .login-page {
+        background-image: url(/assets/bg.jpg);
+    }
+</style>
+
+<body class="login-page">
+    <div>
+        <div id="login">
             <img class="auth-logo" src="./assets/logo.png" alt="Streama Logo">
             <div class="inner">
-
-
-
                 <form action="/user" method="POST" id="loginForm" class="cssform form-horizontal ng-pristine ng-valid" autocomplete="off">
 
                     <div class="form-group">
@@ -71,54 +30,33 @@
                             <input type="text" name="username" class="form-control" placeholder="correo">
                         </div>
                     </div>
-                    <span class="ng-binding">
-            
-              Registrate para poder entrar a streama,recibiras un coprreo para crear tu password
-            
-            <input style="display: none;" type="checkbox" name="remember_me" id="remember_me" checked="checked">
+                    <div class="ng-binding">
+                        <div class="container">
+                            <h6>
+                                Registrate para poder entrar a streama,recibiras un correo para crear tu password
+                            </h6>
+                        </div>
+                        <div class="container">
+                            <div class="row d-block">
+                                <div class="float-md-right">
+                                    <button class="btn btn-dark ng-binding" style="border-color: azure;">Login &nbsp; </button>
+                                </div>
 
-            <button class="btn btn-primary pull-right ng-binding">Login &nbsp; <i class="ion-chevron-right"></i></button></span>
+                            </div>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>
-        <div class="page-container-push"></div>
     </div>
-
-
     <div class="footer">
-
         <div class="version">v1.9.2</div>
-
-
-        <div ng-bind-html="$root.getSetting('footer-content').parsedValue | trustHtml"></div>
     </div>
-
-
-
-    <script type="text/javascript" src="/assets/vendor-0ae160bb0d1df3b1357f2958032ef910.js"></script>
-    <script type="text/javascript" src="/assets/streama/streama.translations-bb588a68f6652ee65ff05916fc3757c4.js"></script>
-
     <script type="text/javascript">
         (function() {
             document.forms['loginForm'].elements['username'].focus();
         })();
-
-        angular.module('streama.auth', ['streama.translations', 'LocalStorageModule']);
-
-        angular.module('streama.auth').controller('authController', function($translate, localStorageService) {
-            localStorageService.remove('currentProfile');
-            var sessionExpired = false;
-            if (sessionExpired) {
-                alertify.log($translate.instant('LOGIN.SESSION_EXPIRED'));
-            }
-        })
     </script>
-
-
-
-
-
-
 </body>
 
 </html>
