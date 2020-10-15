@@ -1,8 +1,5 @@
 #.env
 
-# Entorno
-NODE_ENV = 'dev'
-
 # Puerto del servidor
 PORT=
 
@@ -11,10 +8,10 @@ PORT=
 # MYSQL_USER => usuario DB
 # MYSQL_PASS => password DB 
 # MYSQL_DB => nombre de la DB
-MYSQL_HOST = 
-MYSQL_USER = 
-MYSQL_PASS = 
-MYSQL_DB   =
+MYSQL_HOST='172.16.0.2'
+MYSQL_USER= 
+MYSQL_PASS= 
+MYSQL_DB=
 
 
 # datos para el envío de email: nodemailer
@@ -25,11 +22,11 @@ PASS =
 
 # Vencimiento del token
 # seg * min * h 
-CADUCIDAD_TOKEN = '1h'
+CADUCIDAD_TOKEN='1h'
 
 # SEED de token 
 # SEED => seed de autenticación puede ser cualquier String 'separado-por-guiones' para una mejor semilla
-SEED = 
+SEED="seed-alfonso6z"
 
 # UAMI_STREAM => UAMIstream el host donde este corriendo la app
-UAMI_STREAM =
+UAMI_STREAM="http://172.16.0.4:8080/"

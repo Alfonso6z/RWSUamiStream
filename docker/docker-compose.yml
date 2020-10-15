@@ -1,0 +1,73 @@
+version: "3"
+
+services:
+  mysql:
+    image: mysql:5.7
+    restart: always
+    container_name: mysql
+    hostname: mysql
+    networks:
+      net-backend:
+        ipv4_address: 172.16.0.2
+    
+    expose:
+      - 3306
+    volumes:
+      - db_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: streama_root_password
+      MYSQL_USER: streama
+      MYSQL_DATABASE: streama
+      MYSQL_PASSWORD: streama_password
+
+  streama:
+    image: streama
+    build: .
+    restart: always
+    container_name: streama
+    hostname: streama
+    depends_on:
+      - mysql
+    networks:
+      net-backend:
+        ipv4_address: 172.16.0.4
+    expose:
+      - 8080
+    volumes:
+      - $HOME/movies:/data/streama # Change to your video folder
+      - app_data:/app/streama
+    environment:
+      ACTIVE_PROFILE: mysql
+      MYSQL_HOST: mysql
+      MYSQL_PORT: 3306
+      MYSQL_DB: streama
+      MYSQL_USER: streama
+      MYSQL_PASSWORD: streama_password
+
+  proxy-reverse:
+    image: proxy-reverse
+    build: nginx/.
+    restart: always
+    container_name: proxy-reverse
+    hostname: proxy-reverse
+    depends_on:
+      - streama    
+    networks:
+      net-backend:
+        ipv4_address: 172.16.0.5
+    ports:
+      - "80:80"
+    volumes:
+      - proxy_reverse_data:/etc/nginx
+      - proxy_reverse_data_log:/var/log/nginx
+
+networks:
+  net-backend:
+    external:
+      name: restuamistream_intranet
+
+volumes:
+  db_data:
+  app_data:
+  proxy_reverse_data:
+  proxy_reverse_data_log:
