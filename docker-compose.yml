@@ -1,0 +1,27 @@
+version: "3"
+
+services:
+
+  node-uami:
+    image: node-uami
+    build: .
+    restart: always
+    container_name: node-uami
+    hostname: node-uami
+    env_file: 
+      - .env
+    expose:
+      - 4000
+    networks: 
+      intranet:
+        ipv4_address: 172.16.0.3
+
+
+networks: 
+  intranet:
+    driver: bridge
+    ipam:
+      driver: default
+      config: 
+        - subnet: 172.16.0.0/24
+          gateway: 172.16.0.1

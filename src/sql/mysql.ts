@@ -1,7 +1,9 @@
 import mysql = require('mysql');
-import * as dotenv from 'dotenv';
 
-dotenv.config();
+if(process.env.NODE_ENV !== "production"){
+    require('dotenv').config();
+}
+
 export default class MySQL{
 
     private static _instance: MySQL;

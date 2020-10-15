@@ -11,13 +11,14 @@
         "test": "echo \"Error: no test specified\" && exit 1",
         "public": "copyfiles --up 1 src/public/*.html dist && copyfiles --up 1 -a src/public/assets/* dist && copyfiles --up 1 -a src/public/views/* dist",
         "build": "tsc && npm run public",
-        "postinstall": "npm run build",
-        "start": "node dist/index.js"
+        "dev": "cross-env NODE_ENV=developmen nodemon dist/index.js",
+        "start": "cross-env NODE_ENV=production node dist/index.js"
     },
     "author": "Alfonso6z",
     "license": "MIT",
     "dependencies": {
         "copyfiles": "^2.4.0",
+        "cross-env": "^7.0.2",
         "dotenv": "^8.2.0",
         "express": "^4.17.1",
         "hbs": "^4.1.1",

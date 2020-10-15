@@ -1,0 +1,8 @@
+node_modules
+npm-debug.log
+README.md
+dist
+env
+env_heroku.sh
+docker
+
