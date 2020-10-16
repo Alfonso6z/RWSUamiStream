@@ -64,8 +64,8 @@ services:
 networks:
   net-backend:
     external:
-      name: restuamistream_intranet
-
+      name: rwsuamistream_intranet
+      
 volumes:
   db_data:
   app_data:

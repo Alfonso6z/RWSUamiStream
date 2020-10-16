@@ -23,9 +23,7 @@ ___
 - [🔧 Instalación](#instalación-🔧)
     * [Streama](#streama)
     * [RWS-UamiStream](#rws-uamistream)
-- [🚀 Ejecucion](#ejecucion-🚀)
-- [🛠️ Construido](#construido-🛠️)
-- [✒️ Colaboradores](#colaboradores-✒️)
+- [🖥️ Ejecucion](#ejecucion-🖥️)
 - [📄 Licencia](#licencia-📄)
 
 ---
@@ -43,12 +41,12 @@ _Este RWS-UamiStream funciona principalmente en las WebApp **Streama**, permite 
 Para probar este proyecto es necesario el jar de streama y tener instalado lo siguiente: 
 
 
-| Nombre                                        |Versión        |
-| :----------:                                    | :----------:    |
-| [Streama.jar](hhttps://github.com/streamaserver/streama/releases/tag/v1.9.2) | 1.9.2         |
-| [Node ](https://nodejs.org/es/)               | 14.3.0        |
-| [Java ](https://nodejs.org/es/)               | 8        |
-| [Typescript](https://www.typescriptlang.org/) | 4.0.2         |
+| Nombre|Versión      ||
+|:-:|:-:|:-:|
+| [Nodejs](https://nodejs.org/es/)|14.3.0|![nodejs](https://raw.githubusercontent.com/Alfonso6z/a6zicons/master/64px/nodejs.svg)
+| [Java ](https://nodejs.org/es/)|8|![java](https://raw.githubusercontent.com/Alfonso6z/a6zicons/master/64px/java.svg)
+| [Typescript](https://www.typescriptlang.org/)|4.0.2|![tsc](https://raw.githubusercontent.com/Alfonso6z/a6zicons/master/64px/typescript-def.svg)
+|[Streama.jar](hhttps://github.com/streamaserver/streama/releases/tag/v1.9.2)|1.9.2|
 
 
 Visite el [GitHub](https://github.com/streamaserver/streama) de streama para saber más de su funcionamiento e instalación. 
@@ -59,28 +57,6 @@ Visite el [GitHub](https://github.com/streamaserver/streama) de streama para sab
  ----
 ## Instalación 🔧
 
-### Streama
-Descargue el archivo jar de streama y colóquelo en la raíz del proyecto, posteriormente configure el archivo [application.yml](application.yml):
-
-```
-
-:::yml
-environments:
-    production:
-        dataSource:
-            driverClassName:  'com.mysql.jdbc.Driver'
-            url: jdbc:mysql://MYSQL_SERVER_IP/MYSQL_DATABASE
-            username: MYSQL_USER
-            password: MYSQL_PASSWORD
-
-```
-Haga el .jar ejecutable  con el siguiente comando:
-
-```
-$ chmod +x streama-X.Y.jar
-```
-
-
 ### RWS-UamiStream
 
 Clone o descargue el reléase de este  proyecto, dentro de la carpeta del mismo abra una terminal y ejecute el siguiente:  
@@ -88,7 +64,7 @@ Clone o descargue el reléase de este  proyecto, dentro de la carpeta del mismo 
 ```
 $ npm install
 ```
-Antes de la construcción tendrá que configurar el archivo __**evn**__ cambiando el nombre a __**.evn**__ y colocar las variables de entorno
+Antes de la construcción tendrá que configurar el archivo [evn](env) renombrandolo a  __**.evn**__ y colocar las variables de entorno. 
 
 
 ```
@@ -96,7 +72,19 @@ $ npm run build
 ```
 
 
-## Ejecucion 🚀
+### Streama
+Descargue el archivo jar de streama y colóquelo en la raíz del proyecto RWSUamiStreama, posteriormente configure el archivo [application.yml](application.yml) que esta en la raíz, colocando los datos de su base de datos.
+
+Haga el ***.jar*** ejecutable  con el siguiente comando:
+
+```
+$ chmod +x streama.jar
+```
+
+
+
+## Ejecución 🖥️
+![]()
 
 Si ya tiene todo lo anterior solo basta con ejecutar _Streama_ y el _RWS-UamiStream,_ con los siguientes comandos:
 
@@ -112,17 +100,24 @@ RWSUamiStream
 $ java -jar streama.jar 
 
 ```
+---
+## Ejecución en Docker 
+|||
+|:----------:|-------|
+|![Docker](https://raw.githubusercontent.com/Alfonso6z/a6zicons/master/64px/docker.svg)|Para poder instalar el proyecto con Docker es necesario tener instalado [docker]() y [docker-compose]().
+Ejecutar los siguientes comandos en ese orden ya que el primer comando crea una network necesaria para conectar todos los contenedores.
 
-## Construido 🛠️
+```
+$ docker-compose -f "docker-compose.yml" up -d --build
+```
+```
+$ docker-compose -f "docker/docker-compose.yml" up -d --build
+```
 
-## Colaboradores ✒️
+La ip de __Streama__ por defecto es __172.16.0.4:8080__ de Streama si no responde aun esta creando la base de datos, de __RWSUamiStream__ es __172.16.0.3:8080__
 
-* **[Alfonso González Zempoalteca](https://github.com/Alfonso6z)** - *Trabajo Inicial*
-
-### contribuyentes:
-* Aún hay que aportar mucho a este proyecto, se mencionará a cada uno de los desarrolladores que contribuyan con nuevas funciones o que las complementen.
 
 ## Licencia 📄
 
-Este proyecto está bajo la Licencia MIT - mira el archivo [license](license.md) para detalles.
+Este proyecto está bajo la Licencia MIT - mira el archivo [license](LICENSE.md) para detalles.
 

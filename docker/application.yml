@@ -2,9 +2,9 @@ environments:
     production:
         dataSource:
             driverClassName:  'com.mysql.jdbc.Driver'
-            url: jdbc:mysql://MYSQL_SERVER_IP/MYSQL_DATABASE
-            username: MYSQL_USER
-            password: MYSQL_PASSWORD
+            url: jdbc:mysql://172.16.0.2/streama
+            username: streama
+            password: streama_password
         server:
             port: 8080
 

@@ -17,8 +17,8 @@ MYSQL_DB=
 # datos para el envío de email: nodemailer
 # EMAIL => 'email remitente
 # PASS => 'password del email
-EMAIL =
-PASS =
+EMAIL=
+PASS=
 
 # Vencimiento del token
 # seg * min * h 
