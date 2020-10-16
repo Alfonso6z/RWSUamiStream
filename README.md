@@ -104,7 +104,8 @@ $ npm run start
 ## Ejecución en Docker 
 |||
 |:----------:|-------|
-|![Docker](https://raw.githubusercontent.com/Alfonso6z/a6zicons/master/64px/docker.svg)|Para poder instalar el proyecto con Docker es necesario tener instalado [docker]() y [docker-compose]().
+|![Docker](https://raw.githubusercontent.com/Alfonso6z/a6zicons/master/64px/docker.svg)|Para poder instalar el proyecto con Docker es necesario tener instalado [docker]() y [docker-compose]().|
+
 Ejecutar los siguientes comandos en ese orden ya que el primer comando crea una network necesaria para conectar todos los contenedores.
 
 ```
