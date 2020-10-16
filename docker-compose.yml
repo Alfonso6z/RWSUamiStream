@@ -8,10 +8,10 @@ services:
     restart: always
     container_name: node-uami
     hostname: node-uami
+    ports:
+      - 3000:3000
     env_file: 
       - .env
-    expose:
-      - 4000
     networks: 
       intranet:
         ipv4_address: 172.16.0.3

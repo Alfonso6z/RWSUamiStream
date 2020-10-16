@@ -1,9 +1,4 @@
-node_modules/
-
-dist/
-
+node_modules
+dist
 .env
-
 package-lock.json
-
-env_heroku.sh

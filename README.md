@@ -62,32 +62,38 @@ Visite el [GitHub](https://github.com/streamaserver/streama) de Streama para sab
 
 ### RWS-UamiStream
 
-Clone o descargue el release de este  proyecto, dentro de la carpeta del mismo abra una terminal y ejecute el siguiente comando:  
+Clone o descargue el release de este  proyecto,Antes de la construcción tendrá que configurar el archivo [evn](env) renombrandolo a  __**.evn**__ y colocando las variables de entorno.
+Abra una terminal y ejecute los siguientes comandos:  
 
+1. instalaciond el los paquetes npm 
 ```
 $ npm install
 ```
-Antes de la construcción tendrá que configurar el archivo [evn](env) renombrandolo a  __**.evn**__ y colocar las variables de entorno.
 
+2. construccion de los archivos js
 ```
 $ npm run build
 ```
 
 ### Streama
-Descargue el archivo __.jar__ de streama y colóquelo en la raíz del proyecto RWSUamiStreama, posteriormente configure el archivo [application.yml](application.yml) que está en la raíz, colocando las variables de su base de datos.
+Configure el archivo [application.yml](application.yml) que está en la raíz, colocando las variables de entonrno de su base de datos.
 
-Haga el ***.jar*** ejecutable  con el siguiente comando:
+El siguiente comando descarga y hace el __jar__ ejecutable.
+
+```
+$ sh descargar_streama.sh
+```
+
+o bien 
+Descargue el archivo __.jar__ de streama y colóquelo en la raíz del proyecto RWSUamiStreama y Haga el ***.jar*** ejecutable  con el siguiente comando:
 
 ```
 $ chmod +x streama.jar
 ```
 
-
-
 ## Ejecución 🖥️
-![]()
 
-Si ya tiene todo lo anterior solo basta con ejecutar _Streama_ y el _RWS-UamiStream,_ con los siguientes comandos:
+Si ya tiene todo lo anterior solo basta con ejecutar _Streama_ y el _RWS-UamiStream,_ con los siguientes comandos en diferente bash.
 
 Streama:
 
@@ -106,6 +112,7 @@ $ npm run start
 |:----------:|-------|
 |![Docker](https://raw.githubusercontent.com/Alfonso6z/a6zicons/master/64px/docker.svg)|Para poder instalar el proyecto con Docker es necesario tener instalado [docker]() y [docker-compose]().|
 
+
 Ejecutar los siguientes comandos en ese orden ya que el primer comando crea una network necesaria para conectar todos los contenedores.
 
 ```
@@ -115,7 +122,13 @@ $ docker-compose -f "docker-compose.yml" up -d --build
 $ docker-compose -f "docker/docker-compose.yml" up -d --build
 ```
 
-La IP de __Streama__ por defecto es __172.16.0.4:8080__ y de __RWSUamiStream__ es __172.16.0.3:8080__, como streama tine que construir la base de datos puede tardar unos minutos mostrar la página. 
+Si quiere una ejecución automática de los 2 comandos anteriores ejecute lo siguiente.
+
+```
+$ sh docker/docker_install.sh
+```
+
+La IP de __Streama__ por defecto es __172.16.0.4:8080__ y de __RWSUamiStream__ es __172.16.0.3:8080__, y estan mapeados por defecto a los puertos __8080__ y __3000__ respectivamente,como streama tine que construir la base de datos puede tardar unos minutos mostrar la página. 
 
 
 ## Licencia 📄
