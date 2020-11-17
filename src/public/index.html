@@ -24,10 +24,9 @@
             <img class="auth-logo" src="./assets/logo.png" alt="Streama Logo">
             <div class="inner">
                 <form action="/user" method="POST" id="loginForm" class="cssform form-horizontal ng-pristine ng-valid" autocomplete="off">
-
                     <div class="form-group">
                         <div class="col-lg-12">
-                            <input type="text" name="username" class="form-control" placeholder="correo">
+                            <input type="text" name="username" class="form-control" placeholder="Correo">
                         </div>
                     </div>
                     <div class="ng-binding">
@@ -39,7 +38,31 @@
                         <div class="container">
                             <div class="row d-block">
                                 <div class="float-md-right">
-                                    <button class="btn btn-dark ng-binding" style="border-color: azure;">Login &nbsp; </button>
+                                    <button class="btn btn-dark ng-binding" style="border-color: azure;">Regístrate &nbsp; </button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="inner">
+                <form action="/userPassword" method="POST" id="loginForm" class="cssform form-horizontal ng-pristine ng-valid" autocomplete="off">
+                    <div class="form-group">
+                        <div class="col-lg-12">
+                            <input type="text" name="username" class="form-control" placeholder="Escribe tu correo electronico para recuperar tu contraseña">
+                        </div>
+                    </div>
+                    <div class="ng-binding">
+                        <div class="container">
+                            <h6>
+                                ¿Olvidaste tu contraseña?
+                            </h6>
+                        </div>
+                        <div class="container">
+                            <div class="row d-block">
+                                <div class="float-md-right">
+                                    <button class="btn btn-dark ng-binding" style="border-color: azure;">Recuperar &nbsp; </button>
                                 </div>
 
                             </div>

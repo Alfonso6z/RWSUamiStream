@@ -12,10 +12,11 @@ services:
       - 3000:3000
     env_file: 
       - .env
-    networks: 
+    # volumes:
+    #   - $HOME/Dev/RWSUamiStream/dist/public:/app/node-uami/dist/public
+    networks:
       intranet:
         ipv4_address: 172.16.0.3
-
 
 networks: 
   intranet:

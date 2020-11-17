@@ -1,7 +1,9 @@
 node_modules
 npm-debug.log
-README.md
+Dockerfile
+*.md
 dist
 env
-env_heroku.sh
-docker-streama
+docker
+*.sh
+*.yml
