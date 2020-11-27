@@ -1,10 +1,6 @@
 import nodemailer = require('nodemailer');
 
 function enviarCorreo(para:string,asunto:string,text:string){
-    
-    console.log(process.env.EMAIL);
-    console.log(process.env.PASS);
-
     const transpoter = nodemailer.createTransport({
         host : "smtp.gmail.com",
         port: 465 ,
@@ -13,7 +9,6 @@ function enviarCorreo(para:string,asunto:string,text:string){
             pass:process.env.PASS
         },
         secure: true
-
     });
 
     let mensaje = {

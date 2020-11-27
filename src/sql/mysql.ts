@@ -54,7 +54,6 @@ export default class MySQL{
                 console.log(err.message);
                 return;
             }
-
             this.conectado = true;
             console.log('Base de datos online');
         });

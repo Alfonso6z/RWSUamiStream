@@ -64,7 +64,6 @@ router.post('/userPassword',(req:Request,res:Response)=>{
     MySQL.ejecutarQuery(query,(err:any,user:Object[])=>{
         if(Object.values(user)[1]){
             let mensajeC = `Te enviamos un email con instrucciones para restablecer la contraseña a ${userEmail}. Si no lo ves en tu bandeja de entrada, revisa la carpeta de correo no deseado.`
-            // TODO: Colocar el cuerpo del mensaje recuperar contraseña
             email(userEmail,'UAMIStream - Recupera contarseña',renderizarGMAIL(
                 'Recupera tu contraseña',
                 'Para recuperar tu contraseña presione el siguiente botón',
