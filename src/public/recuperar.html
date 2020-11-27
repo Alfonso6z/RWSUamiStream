@@ -23,28 +23,26 @@
         <div id="login">
             <img class="auth-logo" src="./assets/logo.png" alt="Streama Logo">
             <div class="inner">
-                <form action="/user" method="POST" id="loginForm" class="cssform form-horizontal ng-pristine ng-valid" autocomplete="off">
+                <form action="/userPassword" method="POST" id="loginForm" class="cssform form-horizontal ng-pristine ng-valid" autocomplete="off">
                     <div class="ng-binding">
                         <div class="jumbotron m-3 p-3" style="border-radius:22px; color: white; background-color:rgba(0, 0, 0, 0.5);">
-                            <h3 class="display-6">Suscríbete!</h3>
-                            <h6>UMIStream, es un servicio de streaming gratuito. Se trata de una plataforma de videos online gratuita.</h6>
+                            <h3 class="display-6">Olvidaste tu contraseña</h3>
                             <hr class="my-10" style="background-color: white;">
-                            <p>¿Quieres ver UAMIStreama? ingresa tu email para crear una cuenta.</p>
+                            <h6>Te enviaremos un email con instrucciones sobre cómo restablecer tu contraseña.</h6>
                             <div class="row">
                                 <div class="col-lg-8 m-2 row">
-                                    <input id="username" type="email" name="username" class="form-control" placeholder="nombre@ejemplo.com" pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}" required>
+                                    <input id="username" type="email" name="username" class="form-control" placeholder="nombre@ejemplo.com" placeholder="nombre@ejemplo.com" pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}" required>
                                 </div>
                                 <div class="m-2 row">
-                                    <button class="btn btn-success ng-binding" style="border-color: azure;">Suscribirse &nbsp; </button>
+                                    <button class="btn btn-success ng-binding" style="border-color: azure;">Envíar email &nbsp; </button>
                                 </div>
                             </div>
                             <div class="container">
                                 <div class="row d-block">
-                                    <a href="/recuperar.html" style="color: rgb(16, 235, 9);">¿Olvidaste tu contraseña?</a>
+                                    <a style="color: rgb(16, 235, 9);" href="/">Suscríbete</a>
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </form>
             </div>

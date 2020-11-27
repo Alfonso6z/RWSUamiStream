@@ -10,10 +10,13 @@ router.use(e.urlencoded({extended:true}));
 
 
 router.post('/user',(req:Request,res:Response)=>{
- 
-
+    const boton=` 
+    <div class="container">
+        <div class="row d-block">
+            <a style="color: rgb(16, 235, 9);" href="/">Inténtalo de nuevo</a>
+        </div>
+    </div>`;
     const userEmail = req.body.username;
-       
     const token = jws.sign({
         username:userEmail
     },`${process.env.SEED}`,{expiresIn:60});
@@ -27,26 +30,31 @@ router.post('/user',(req:Request,res:Response)=>{
 
     MySQL.ejecutarQuery(query,(err:any,user:Object[])=>{
         if(err){
-            return res.render('confirmacion',{msg:{email:userEmail,mensaje:'No se puede registrar este correo'}});
+            let mensajeC = `${userEmail} es incorrecto o ya esta registrado.`
+            return res.render('confirmacion',{mensaje:mensajeC,titulo:'Error',advertencia:'',boton});
         }else{
-            // TODO: Colocar el cuerpo del mensaje registro
-            email(userEmail,'UamiStream',`${process.env.UAMI_STREAM}invite?uuid=${token}`);
-            return res.render('confirmacion',{msg:{email:userEmail,mensaje:'Se envio un correo de verificación, verifica tu bandejaq de entrada para continuar con tu registro'}});
+            let mensajeC = `Te enviamos un email a ${userEmail}. Si no lo ves en tu bandeja de entrada, revisa la carpeta de correo no deseado.`
+            email(userEmail,'UAMIStream - ¡Bienvenido!',renderizarGMAIL(
+                '¡Bienvenido a UAMIStream!',
+                'Para crear una contraseña presione el siguiente botón',
+                'Crear contraseña',
+                `${process.env.UAMI_STREAM}invite?uuid=${token}`));
+            return res.render('confirmacion',{mensaje:mensajeC,titulo:'Email enviado',advertencia:'Ya puedes cerrar esta página'});
         }
     });
-    
-    
 });
 
 router.post('/userPassword',(req:Request,res:Response)=>{
- 
-
+    const boton=` 
+    <div class="container">
+        <div class="row d-block">
+            <a style="color: rgb(16, 235, 9);" href="/recuperar.html">Inténtalo de nuevo</a>
+        </div>
+    </div>`;
     const userEmail = req.body.username;
-       
     const token = jws.sign({
         username:userEmail
     },`${process.env.SEED}`,{expiresIn:60});
-
 
     const usernameEscape = MySQL.instance.cnn.escape(userEmail);
     const tokenEscape = MySQL.instance.cnn.escape(token);
@@ -54,16 +62,53 @@ router.post('/userPassword',(req:Request,res:Response)=>{
     UPDATE user SET uuid=${tokenEscape} WHERE username=${usernameEscape}`;
 
     MySQL.ejecutarQuery(query,(err:any,user:Object[])=>{
-        if(err){
-            return res.render('confirmacion',{msg:{email:userEmail,mensaje:'No se encontro este correo'}});
-        }else{
+        if(Object.values(user)[1]){
+            let mensajeC = `Te enviamos un email con instrucciones para restablecer la contraseña a ${userEmail}. Si no lo ves en tu bandeja de entrada, revisa la carpeta de correo no deseado.`
             // TODO: Colocar el cuerpo del mensaje recuperar contraseña
-            email(userEmail,'UamiStream',`${process.env.UAMI_STREAM}invite?uuid=${token}`);
-            return res.render('confirmacion',{msg:{email:userEmail,mensaje:'Se envio un correo de verificación, verifica tu bandejaq de entrada para actualizar tu contraseña'}});
+            email(userEmail,'UAMIStream - Recupera contarseña',renderizarGMAIL(
+                'Recupera tu contraseña',
+                'Para recuperar tu contraseña presione el siguiente botón',
+                'Recuperar contraseña',
+                `${process.env.UAMI_STREAM}invite?uuid=${token}`));
+            return res.render('confirmacion',{mensaje:mensajeC,titulo:'Email enviado',advertencia:'Ya puedes cerrar esta página'});
+            
+        }else{
+            let mensajeC = `${userEmail} no esta registrado`
+            return res.render('confirmacion',{mensaje:mensajeC,titulo:'Error',advertencia:'',boton});
         }
     });
     
     
 });
+
+const renderizarGMAIL = (titulo:string,body:string,msgbtn:string,url:string):string =>{
+    
+    let html = `
+    <div>&nbsp;</div>
+    <table style="max-width: 600px; padding: 10px; margin: 0 auto; border-collapse: collapse;">
+        <tbody>
+            <tr>
+            <td style="padding: 3; background-color: black;">
+            <div class="container m-3 p-3">
+            <img style="display: block;" src="http://imgfz.com/i/ZKvEljU.png" width="100%" /></td>
+            </div>
+            </tr>
+            <tr>
+                <td style="background-color: #ecf0f1;">
+                    <div style="color: #494e52; margin: 4% 10% 2%; text-align: justify; font-family: sans-serif;">
+                        <h2 style="color: black; margin: 0 0 7px;">${titulo}</h2>
+                        <br/>
+                        <p style="margin: 2px; font-size: 15px;">${body}</p>
+                        <br /><br />
+                        <div style="width: 100%; text-align: center;"><a style="text-decoration: none; border-radius: 5px; padding: 11px 23px; color: white; background-color: black; text-align: center;" href="${url}">${msgbtn}</a></div>
+                        <p style="color: #8b8484; font-size: 12px; text-align: center; margin: 30px 0 0;">UAMISTREAM es un un servidor de videos que est&aacute; desarrollado como parte de un proyecto de la IntraNet Comunitaria SIN FINES DE LUCRO</p>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>`;
+    
+    return html;
+}
 
 export default router;

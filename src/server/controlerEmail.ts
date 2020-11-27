@@ -20,7 +20,7 @@ function enviarCorreo(para:string,asunto:string,text:string){
         from:"no-reply@gmail.com",
         to:para,
         subject:asunto,
-        text:text
+        html:text
     }
 
     transpoter.sendMail(mensaje).then(()=>{
@@ -29,6 +29,5 @@ function enviarCorreo(para:string,asunto:string,text:string){
         console.log('error al enviar el correo');
         console.log(err);
     });
-
 }
 export default enviarCorreo;
