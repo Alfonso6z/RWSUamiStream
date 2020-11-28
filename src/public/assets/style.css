@@ -21,28 +21,71 @@
 }
 
 .form-control {
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.5);
     color: white;
 }
 
 .form-control:focus {
     background-color: rgba(0, 0, 0, 0.4);
     color: white;
-}
-
-.ng-binding {
-    color: aliceblue;
-}
-
-#login .inner .login_message {
-    padding: 6px 25px 20px 25px;
-    color: #c33;
+    border-color: rgba(1, 124, 11, 0.877);
+    box-shadow: 0 1px 1px rgba(224, 218, 214, 0.075)inset, 0 0 8px rgba(209, 207, 204, 0.6);
+    outline: 0 none;
 }
 
 input:invalid {
-    border-color: red;
+    border-color: white;
 }
 
 input:valid {
     border-color: rgb(75, 240, 88);
+}
+
+input:hover {
+    border-color: rgba(1, 124, 11, 0.877);
+}
+
+a:hover {
+    color: rgb(75, 240, 88);
+}
+
+.colortextbtn {
+    color: rgba(1, 124, 11, 0.877);
+}
+
+.colorJumbotron {
+    border-radius: 22px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 15px;
+    margin: 15px;
+    margin-top: -25px;
+}
+
+button.boton {
+    display: inline-block;
+    padding: 0.35em 1.2em;
+    border: 0.1em solid #FFFFFF;
+    margin: 0 0.3em 0.3em 0;
+    border-radius: 0.12em;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    color: #FFFFFF;
+    text-align: center;
+    transition: all 0.2s;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+button.boton:hover {
+    color: white;
+    background-color: rgba(1, 124, 11, 0.877);
+}
+
+@media all and (max-width:30em) {
+    button.boton {
+        display: block;
+        margin: 0.4em auto;
+    }
 }

@@ -3,19 +3,11 @@ import MySQL from '../sql/mysql';
 import email from '../server/controlerEmail';
 import jws = require('jsonwebtoken');
 
-
-
 const router = Router();
 router.use(e.urlencoded({extended:true}));
 
-
 router.post('/user',(req:Request,res:Response)=>{
-    const boton=` 
-    <div class="container">
-        <div class="row d-block">
-            <a style="color: rgb(16, 235, 9);" href="/">Inténtalo de nuevo</a>
-        </div>
-    </div>`;
+
     const userEmail = req.body.username;
     const token = jws.sign({
         username:userEmail
@@ -31,7 +23,7 @@ router.post('/user',(req:Request,res:Response)=>{
     MySQL.ejecutarQuery(query,(err:any,user:Object[])=>{
         if(err){
             let mensajeC = `${userEmail} es incorrecto o ya esta registrado.`
-            return res.render('confirmacion',{mensaje:mensajeC,titulo:'Error',advertencia:'',boton});
+            return res.render('confirmacion',{mensaje:mensajeC,titulo:'Error',advertencia:'',boton:textBtn('/','Inténtalo de nuevo')});
         }else{
             let mensajeC = `Te enviamos un email a ${userEmail}. Si no lo ves en tu bandeja de entrada, revisa la carpeta de correo no deseado.`
             email(userEmail,'UAMIStream - ¡Bienvenido!',renderizarGMAIL(
@@ -45,12 +37,6 @@ router.post('/user',(req:Request,res:Response)=>{
 });
 
 router.post('/userPassword',(req:Request,res:Response)=>{
-    const boton=` 
-    <div class="container">
-        <div class="row d-block">
-            <a style="color: rgb(16, 235, 9);" href="/recuperar.html">Inténtalo de nuevo</a>
-        </div>
-    </div>`;
     const userEmail = req.body.username;
     const token = jws.sign({
         username:userEmail
@@ -73,7 +59,7 @@ router.post('/userPassword',(req:Request,res:Response)=>{
             
         }else{
             let mensajeC = `${userEmail} no esta registrado`
-            return res.render('confirmacion',{mensaje:mensajeC,titulo:'Error',advertencia:'',boton});
+            return res.render('confirmacion',{mensaje:mensajeC,titulo:'Error',advertencia:'',boton:textBtn('/recuperar.html','Inténtalo de nuevo')});
         }
     });
     
@@ -110,4 +96,12 @@ const renderizarGMAIL = (titulo:string,body:string,msgbtn:string,url:string):str
     return html;
 }
 
+const textBtn = (view:string,mensaje:string ):string => {
+    return ` 
+    <div class="container">
+        <div class="row d-block">
+            <a class="colortextbtn" href="${view}">${mensaje}</a>
+        </div>
+    </div>`;
+}
 export default router;
