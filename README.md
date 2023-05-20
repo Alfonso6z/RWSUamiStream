@@ -44,13 +44,12 @@ Para probar este proyecto es necesario el __.jar__ de streama y tener instalado 
 Para poder usar su correo de __Gmail__ como administrador de __Streama__ se tiene que configurar el acceso de [aplicaciones poco seguras](https://myaccount.google.com/security).
 
 
-| Nombre|Versión      ||
+| Nombre|Versión         ||
 |:-:|:-:|:-:|
-| [Nodejs](https://nodejs.org/es/)|14.3.0|![nodejs](https://raw.githubusercontent.com/Alfonso6z/a6zicons/master/64px/nodejs.svg)
-| [Java ](https://nodejs.org/es/)|8|![java](https://raw.githubusercontent.com/Alfonso6z/a6zicons/master/64px/java.svg)
-| [Typescript](https://www.typescriptlang.org/)|4.0.2|![tsc](https://raw.githubusercontent.com/Alfonso6z/a6zicons/master/64px/typescript-def.svg)
+| [Nodejs](https://nodejs.org/es/)|14.3.0|<img src="https://github.com/PKief/vscode-material-icon-theme/blob/main/icons/nodejs.svg" style="width:50px">
+| [Java ](https://nodejs.org/es/)|8|<img src="https://github.com/PKief/vscode-material-icon-theme/blob/main/icons/java.svg" style="width:50px">
+| [Typescript](https://www.typescriptlang.org/)|4.0.2|<img src="https://github.com/PKief/vscode-material-icon-theme/blob/main/icons/typescript-def.svg" style="width:50px">
 |[Streama.jar](hhttps://github.com/streamaserver/streama/releases/tag/v1.9.2)|1.9.2|
-
 
 Visite el [GitHub](https://github.com/streamaserver/streama) de Streama para saber más de su funcionamiento e instalación. 
 
@@ -110,7 +109,7 @@ $ npm run start
 ## Ejecución en Docker 
 |||
 |:----------:|-------|
-|![Docker](https://raw.githubusercontent.com/Alfonso6z/a6zicons/master/64px/docker.svg)|Para poder instalar el proyecto con Docker es necesario tener instalado [docker]() y [docker-compose]().|
+|<img src="https://github.com/PKief/vscode-material-icon-theme/blob/main/icons/docker.svg" style="width:50px">|Para poder instalar el proyecto con Docker es necesario tener instalado [docker]() y [docker-compose]().|
 
 
 Ejecutar los siguientes comandos en ese orden ya que el primer comando crea una network necesaria para conectar todos los contenedores.
